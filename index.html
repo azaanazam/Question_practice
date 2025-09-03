@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Practice Questions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #1a2a6c;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            color: #555;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .instructions {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #1a2a6c;
+        }
+        
+        .instructions h2 {
+            color: #1a2a6c;
+            margin-bottom: 10px;
+        }
+        
+        .instructions ul {
+            margin-left: 20px;
+            line-height: 1.6;
+        }
+        
+        .question {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+        
+        .question h2 {
+            color: #1a2a6c;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .question-number {
+            background: #1a2a6c;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .question p {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .code-editor {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            overflow-x: auto;
+        }
+        
+        .code-editor textarea {
+            width: 100%;
+            min-height: 150px;
+            background: #2d2d2d;
+            color: #f8f8f2;
+            border: 1px solid #555;
+            border-radius: 5px;
+            padding: 10px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            resize: vertical;
+        }
+        
+        .test-cases {
+            background: #e8f4fc;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #1a2a6c;
+        }
+        
+        .test-cases h3 {
+            margin-bottom: 10px;
+            color: #1a2a6c;
+        }
+        
+        .btn {
+            background: #1a2a6c;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background: #2a3a8c;
+            transform: translateY(-2px);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .hint {
+            background: #fff3cd;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            color: #856404;
+            border-left: 4px solid #ffc107;
+            display: none;
+        }
+        
+        .toggle-hint {
+            color: #1a2a6c;
+            background: none;
+            border: none;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JavaScript Practice Questions</h1>
+            <p class="subtitle">Practice your JavaScript skills with these challenges</p>
+        </header>
+        
+        <div class="instructions">
+            <h2>Instructions</h2>
+            <ul>
+                <li>Read each question carefully and write your solution in the code editor</li>
+                <li>Try to solve the questions without looking up answers</li>
+                <li>Test your solution with the provided test cases</li>
+                <li>Focus on understanding concepts rather than just getting the right answer</li>
+                <li>Practice regularly to improve your skills</li>
+            </ul>
+        </div>
+        
+        <div class="question">
+            <h2><span class="question-number">1</span> Sum of Two Numbers</h2>
+            <p>Write a function called <code>sum</code> that takes two numbers as arguments and returns their sum.</p>
+            
+            <div class="test-cases">
+                <h3>Test Cases:</h3>
+                <p>sum(2, 3) should return 5</p>
+                <p>sum(-1, 5) should return 4</p>
+                <p>sum(0, 0) should return 0</p>
+            </div>
+            
+            <div class="code-editor">
+                <textarea placeholder="Write your solution here...">function sum(a, b) {
+    // Your code here
+}</textarea>
+            </div>
+            
+            <button class="btn" onclick="checkSolution(1)">Run Test</button>
+            
+            <div class="result" id="result-1"></div>
+            
+            <button class="toggle-hint" onclick="toggleHint(1)">Show Hint</button>
+            <div class="hint" id="hint-1">
+                Remember that adding two numbers in JavaScript is done with the + operator.
+                Make sure to return the result instead of just logging it.
+            </div>
+        </div>
+        
+        <div class="question">
+            <h2><span class="question-number">2</span> Even or Odd</h2>
+            <p>Write a function called <code>isEven</code> that takes a number as argument and returns true if the number is even, and false if it's odd.</p>
+            
+            <div class="test-cases">
+                <h3>Test Cases:</h3>
+                <p>isEven(4) should return true</p>
+                <p>isEven(7) should return false</p>
+                <p>isEven(0) should return true</p>
+            </div>
+            
+            <div class="code-editor">
+                <textarea placeholder="Write your solution here...">function isEven(num) {
+    // Your code here
+}</textarea>
+            </div>
+            
+            <button class="btn" onclick="checkSolution(2)">Run Test</button>
+            
+            <div class="result" id="result-2"></div>
+            
+            <button class="toggle-hint" onclick="toggleHint(2)">Show Hint</button>
+            <div class="hint" id="hint-2">
+                You can use the modulus operator (%) to check if a number is even. 
+                If a number modulo 2 equals 0, then it's even.
+            </div>
+        </div>
+        
+        <div class="question">
+            <h2><span class="question-number">3</span> Reverse a String</h2>
+            <p>Write a function called <code>reverseString</code> that takes a string as argument and returns the reversed string.</p>
+            
+            <div class="test-cases">
+                <h3>Test Cases:</h3>
+                <p>reverseString("hello") should return "olleh"</p>
+                <p>reverseString("JavaScript") should return "tpircSavaJ"</p>
+                <p>reverseString("") should return ""</p>
+            </div>
+            
+            <div class="code-editor">
+                <textarea placeholder="Write your solution here...">function reverseString(str) {
+    // Your code here
+}</textarea>
+            </div>
+            
+            <button class="btn" onclick="checkSolution(3)">Run Test</button>
+            
+            <div class="result" id="result-3"></div>
+            
+            <button class="toggle-hint" onclick="toggleHint(3)">Show Hint</button>
+            <div class="hint" id="hint-3">
+                There are several ways to reverse a string in JavaScript. 
+                You can convert the string to an array, reverse it, and then join it back to a string.
+            </div>
+        </div>
+        
+        <div class="question">
+            <h2><span class="question-number">4</span> Find Maximum Number</h2>
+            <p>Write a function called <code>findMax</code> that takes an array of numbers and returns the largest number in the array.</p>
+            
+            <div class="test-cases">
+                <h3>Test Cases:</h3>
+                <p>findMax([1, 5, 3, 9, 2]) should return 9</p>
+                <p>findMax([-1, -5, -3]) should return -1</p>
+                <p>findMax([10]) should return 10</p>
+            </div>
+            
+            <div class="code-editor">
+                <textarea placeholder="Write your solution here...">function findMax(arr) {
+    // Your code here
+}</textarea>
+            </div>
+            
+            <button class="btn" onclick="checkSolution(4)">Run Test</button>
+            
+            <div class="result" id="result-4"></div>
+            
+            <button class="toggle-hint" onclick="toggleHint(4)">Show Hint</button>
+            <div class="hint" id="hint-4">
+                You can use a loop to go through each element in the array and keep track of the maximum value.
+                Alternatively, you can use the Math.max function with the spread operator.
+            </div>
+        </div>
+        
+        <div class="question">
+            <h2><span class="question-number">5</span> Factorial Calculator</h2>
+            <p>Write a function called <code>factorial</code> that takes a number and returns its factorial.</p>
+            
+            <div class="test-cases">
+                <h3>Test Cases:</h3>
+                <p>factorial(5) should return 120</p>
+                <p>factorial(0) should return 1</p>
+                <p>factorial(3) should return 6</p>
+            </div>
+            
+            <div class="code-editor">
+                <textarea placeholder="Write your solution here...">function factorial(n) {
+    // Your code here
+}</textarea>
+            </div>
+            
+            <button class="btn" onclick="checkSolution(5)">Run Test</button>
+            
+            <div class="result" id="result-5"></div>
+            
+            <button class="toggle-hint" onclick="toggleHint(5)">Show Hint</button>
+            <div class="hint" id="hint-5">
+                The factorial of a number is the product of all positive integers less than or equal to that number.
+                Remember that 0! is 1. You can use a loop or recursion to solve this problem.
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Practice makes perfect! Keep coding regularly to improve your JavaScript skills.</p>
+            <p>Remember: The goal is to understand the concepts, not just to get the right answer.</p>
+        </div>
+    </div>
+
+    <script>
+        function checkSolution(questionNum) {
+            const textarea = document.querySelectorAll('.code-editor textarea')[questionNum-1];
+            const code = textarea.value;
+            const resultDiv = document.getElementById(`result-${questionNum}`);
+            
+            try {
+                let testResult = "";
+                
+                // Test based on question number
+                switch(questionNum) {
+                    case 1:
+                        // Test sum function
+                        eval(code);
+                        if (typeof sum !== 'function') throw new Error("You need to define a function named 'sum'");
+                        
+                        if (sum(2, 3) !== 5) throw new Error("Test case failed: sum(2, 3) should return 5");
+                        if (sum(-1, 5) !== 4) throw new Error("Test case failed: sum(-1, 5) should return 4");
+                        if (sum(0, 0) !== 0) throw new Error("Test case failed: sum(0, 0) should return 0");
+                        
+                        testResult = "All test cases passed! ✅";
+                        resultDiv.className = "result success";
+                        break;
+                        
+                    case 2:
+                        // Test isEven function
+                        eval(code);
+                        if (typeof isEven !== 'function') throw new Error("You need to define a function named 'isEven'");
+                        
+                        if (isEven(4) !== true) throw new Error("Test case failed: isEven(4) should return true");
+                        if (isEven(7) !== false) throw new Error("Test case failed: isEven(7) should return false");
+                        if (isEven(0) !== true) throw new Error("Test case failed: isEven(0) should return true");
+                        
+                        testResult = "All test cases passed! ✅";
+                        resultDiv.className = "result success";
+                        break;
+                        
+                    case 3:
+                        // Test reverseString function
+                        eval(code);
+                        if (typeof reverseString !== 'function') throw new Error("You need to define a function named 'reverseString'");
+                        
+                        if (reverseString("hello") !== "olleh") throw new Error('Test case failed: reverseString("hello") should return "olleh"');
+                        if (reverseString("JavaScript") !== "tpircSavaJ") throw new Error('Test case failed: reverseString("JavaScript") should return "tpircSavaJ"');
+                        if (reverseString("") !== "") throw new Error('Test case failed: reverseString("") should return ""');
+                        
+                        testResult = "All test cases passed! ✅";
+                        resultDiv.className = "result success";
+                        break;
+                        
+                    case 4:
+                        // Test findMax function
+                        eval(code);
+                        if (typeof findMax !== 'function') throw new Error("You need to define a function named 'findMax'");
+                        
+                        if (findMax([1, 5, 3, 9, 2]) !== 9) throw new Error("Test case failed: findMax([1, 5, 3, 9, 2]) should return 9");
+                        if (findMax([-1, -5, -3]) !== -1) throw new Error("Test case failed: findMax([-1, -5, -3]) should return -1");
+                        if (findMax([10]) !== 10) throw new Error("Test case failed: findMax([10]) should return 10");
+                        
+                        testResult = "All test cases passed! ✅";
+                        resultDiv.className = "result success";
+                        break;
+                        
+                    case 5:
+                        // Test factorial function
+                        eval(code);
+                        if (typeof factorial !== 'function') throw new Error("You need to define a function named 'factorial'");
+                        
+                        if (factorial(5) !== 120) throw new Error("Test case failed: factorial(5) should return 120");
+                        if (factorial(0) !== 1) throw new Error("Test case failed: factorial(0) should return 1");
+                        if (factorial(3) !== 6) throw new Error("Test case failed: factorial(3) should return 6");
+                        
+                        testResult = "All test cases passed! ✅";
+                        resultDiv.className = "result success";
+                        break;
+                }
+                
+                resultDiv.innerHTML = testResult;
+                resultDiv.style.display = "block";
+                
+            } catch (error) {
+                resultDiv.className = "result error";
+                resultDiv.innerHTML = error.message;
+                resultDiv.style.display = "block";
+            }
+        }
+        
+        function toggleHint(questionNum) {
+            const hint = document.getElementById(`hint-${questionNum}`);
+            const button = document.querySelector(`#hint-${questionNum}`).previousElementSibling;
+            
+            if (hint.style.display === "block") {
+                hint.style.display = "none";
+                button.textContent = "Show Hint";
+            } else {
+                hint.style.display = "block";
+                button.textContent = "Hide Hint";
+            }
+        }
+    </script>
+</body>
+</html>
